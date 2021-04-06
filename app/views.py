@@ -6,6 +6,12 @@ from app.models import Saver
 # Create your views here.
 
 
+def hapus_link(request , id_link):
+    saver = Saver.objects.filter(id = id_link)
+    saver.delete()
+    messages.success(request , 'Link Berhasil DIhapus')
+    return redirect('list-link')
+
 
 
 def editlink(request, id_link):

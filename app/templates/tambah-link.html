@@ -12,6 +12,7 @@
         {% csrf_token %}
         {{form.as_p}}
         <button class="btn btn-primary">Simpan</button>
+        <a href="{% url 'list-link' %}" class="btn btn-danger">Kembali</a>
     </form>
 </div>
 
