@@ -1,0 +1,28 @@
+{% include 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <div class="table-responsive">
+            <thead>
+                <tr>
+                    <th>JUDUL</th>
+                    <th>TANGGAL EDIT</th>
+                    <th>KATEGORI</th>   
+                </tr>
+            </thead>
+            <tbody>
+                {% for link in saver %}
+                <tr>
+                    <td><a href="{{link.link}}">{{link.judul}}</a></td>
+                    <td>{{link.tanggal}}</td>
+                    <td>{{link.kategori_id}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </div>
+    </table>
+</div>
+
+{% endblock %}

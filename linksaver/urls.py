@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import home
+from app.views import home , tambahlink , linkview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , home , name='')
+    path('' , home , name=''),
+    path('tambah-link/', tambahlink , name='tambah-link'),
+    path('list-link/' , linkview , name='list-link'),
 ]
