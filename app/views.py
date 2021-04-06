@@ -6,8 +6,33 @@ from app.models import Saver
 # Create your views here.
 
 
+
+
+def editlink(request, id_link):
+    saver = Saver.objects.get(id=id_link)
+    template = "edit-link.html"
+    if request.POST:
+        form = FormSaver(request.POST , instance=saver)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'data berhasil Diubah')
+            return redirect('edit-link', id_link=id_link)
+    else:
+        form = FormSaver(instance=saver)
+        konteks = {
+            'form':form,
+            'saver':saver
+        }
+        return render(request , template , konteks)
+
+
+
+
 def home(request):
     return render(request , 'home.html')
+
+
+
 
 def linkview(request):
     saver = Saver.objects.all()

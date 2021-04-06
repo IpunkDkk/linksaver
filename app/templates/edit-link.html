@@ -1,0 +1,20 @@
+{% include 'base.html' %} 
+
+{% block content %}
+
+<div class="container">
+    {% for message in messages %}
+    {% if message %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endif %}
+    {% endfor %}
+    <h3>ubah {{saver.judul}}</h3>
+    <form action="{% url 'edit-link' saver.id %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary">Ubah</button>
+        <a href="{% url 'list-link' %}" class="btn btn-danger">Kembali</a>
+    </form>
+</div>
+
+{% endblock %}
