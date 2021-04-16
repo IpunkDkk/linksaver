@@ -26,7 +26,7 @@ SECRET_KEY = ')gp%v@cj55xd$1amb+(_yyxg)1eg)rw##df&ao!csa6s499#_q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['96e29db1cfc9.ngrok.io']
 
 
 # Application definition
@@ -129,3 +129,5 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/home/agung/django/linksaver/static/',
 ]
+LOGIN_REDIRECT_URL = 'list-link'
+LOGGIN_URL = 'login'

@@ -2,10 +2,15 @@ from django.shortcuts import render , redirect
 from app.form import FormSaver
 from django.contrib import messages
 from app.models import Saver
-
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 # Create your views here.
 
 
+
+
+
+@login_required(login_url = settings.LOGGIN_URL)
 def hapus_link(request , id_link):
     saver = Saver.objects.filter(id = id_link)
     saver.delete()
@@ -13,7 +18,7 @@ def hapus_link(request , id_link):
     return redirect('list-link')
 
 
-
+@login_required(login_url = settings.LOGGIN_URL)
 def editlink(request, id_link):
     saver = Saver.objects.get(id=id_link)
     template = "edit-link.html"
@@ -39,7 +44,7 @@ def home(request):
 
 
 
-
+@login_required(login_url = settings.LOGGIN_URL)
 def linkview(request):
     saver = Saver.objects.all()
     judul = "list link"
@@ -49,7 +54,7 @@ def linkview(request):
     }
     return render(request , 'daftar-link.html' , konteks)
 
-
+@login_required(login_url = settings.LOGGIN_URL)
 def tambahlink(request):
     if request.POST:
         form = FormSaver(request.POST , request.FILES)

@@ -6,31 +6,18 @@
     <h3>
         <a href="{% url 'tambah-link' %}">Tambah Link</a>
     </h3>
-    <table class="table table-bordered table-striped">
-        <div class="table-responsive">
-            <thead>
-                <tr>
-                    <th>JUDUL</th>
-                    <th>TANGGAL EDIT</th>
-                    <th>KATEGORI</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for link in saver %}
-                <tr>
-                    <td><a href="{{link.link}}">{{link.judul}}</a></td>
-                    <td>{{link.tanggal}}</td>
-                    <td>{{link.kategori_id}}</td>
-                    <td>
-                        <a href="{% url 'edit-link' link.id %} " class="btn btn-primary">Ubah</a>
-                        <a href="{% url 'hapus-link' link.id %} " class="btn btn-danger" onclick="return confirm('yakin nih ?')">Hapus</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
+    <div class="row">
+    {% for save in saver %} 
+    <div class="card card-succes border border-primary" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{save.judul}}</h5>
+          <p class="card-text">{{save.kategori_id}}</p><br>
+          <p class="card-text">Diupdate {{save.tanggal}}</p>
+          <a href="{{save.link}}" class="btn btn-primary">Tonton</a>
         </div>
-    </table>
+      </div>
+      {% endfor %}
+</div>
 </div>
 
 {% endblock %}

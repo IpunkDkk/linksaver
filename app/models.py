@@ -15,3 +15,13 @@ class Saver(models.Model):
     kategori_id = models.ForeignKey(Kategori , on_delete=models.CASCADE , null=True)
     def __str__(self):
         return self.judul
+
+class Users(models.Model):
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=50)
+    def __str__(self):
+        return self.username
+
+class History(models.Model):
+    judul_id = models.ForeignKey(Saver, on_delete=models.CASCADE , null=True)
+    username_id = models.ForeignKey(Users, on_delete=models.CASCADE , null=True)
